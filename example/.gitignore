@@ -1,0 +1,2 @@
+# Ignore the fasta file, too big!
+*.fasta
