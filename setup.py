@@ -1,7 +1,12 @@
 from setuptools import setup, Extension
-from Cython.Build import cythonize
 from ast import literal_eval
-
+try:
+    from Cython.Build import cythonize
+except ImportError:
+    # create closure for deferred import
+    def cythonize (*args, ** kwargs ):
+        from Cython.Build import cythonize
+        return cythonize(*args, ** kwargs)
 
 def versiontuple(v):
     return tuple(map(int, (v.split("."))))
